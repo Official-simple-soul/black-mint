@@ -122,7 +122,7 @@ let currentHashVal = 854.2;
 setInterval(() => {
   if (blockEl && Math.random() > 0.4) {
     currentBlock += Math.floor(Math.random() * 3) + 1;
-    blockEl.textContent = `#${currentBlock.toLocaleString()}`;
+    blockEl.textContent = `$${currentBlock.toLocaleString()}`;
   }
   if (hashEl) {
     currentHashVal += (Math.random() - 0.5) * 4;
