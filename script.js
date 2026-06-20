@@ -455,6 +455,7 @@ const backdrop = document.getElementById('modal-backdrop');
 const closeBtn = document.getElementById('modal-close-btn');
 const mintBtn = document.getElementById('synth-mint-btn');
 const heroMintBtn = document.getElementById('hero-mint-trigger');
+const headerMintBtn = document.getElementById('header-mint-trigger');
 const ctaMintBtn = document.getElementById('cta-mint-trigger');
 const scrollTrigger = document.getElementById('hero-scroll-trigger');
 
@@ -545,7 +546,7 @@ const closeModal = () => {
   document.body.style.overflow = '';
 };
 
-[mintBtn, heroMintBtn, ctaMintBtn].forEach((btn) => {
+[mintBtn, heroMintBtn, headerMintBtn, ctaMintBtn].forEach((btn) => {
   if (btn) btn.addEventListener('click', openModal);
 });
 
